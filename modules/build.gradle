@@ -1,4 +1,4 @@
-version='0.1.1'
+version='0.1.0'
 
 repositories {
       maven { url 'http://clojars.org/repo' }
@@ -6,13 +6,13 @@ repositories {
 
 buildscript {
     repositories {
-      mavenCentral()
       jcenter()
+      mavenCentral()
       maven { url 'http://clojars.org/repo' }
     }
     dependencies {
-        classpath 'com.google.appengine:gradle-appengine-plugin:1.9.23'
-	classpath 'clojuresque:clojuresque:1.7.0'
+     classpath 'com.google.appengine:gradle-appengine-plugin:1.9.23'
+     classpath 'clojuresque:clojuresque:1.7.0'
     }
 }
 
@@ -39,28 +39,26 @@ dependencies {
     compile 'ns-tracker:ns-tracker:0.3.0'
 
     compile 'metosin:compojure-api:0.22.0'
+    compile 'ns-tracker:ns-tracker:0.3.0'
     compile 'ring:ring-core:1.4.0'
     compile 'ring:ring-devel:1.4.0'
     compile 'ring:ring-servlet:1.4.0'
     compile 'ring:ring-defaults:0.1.5'
     compile 'fogus:ring-edn:0.2.0'
-
-    compile 'hiccup:hiccup:1.0.5'
-    compile "org.mobileink:migae.datastore:0.3.2-SNAPSHOT"
 }
 
 appengine {
     daemon = false
-    httpAddress = '0.0.0.0'  // for android testing
-    httpPort = 8082
+    httpAddress = '0.0.0.0'   // to test android
+    httpPort = 8080
     // jvmFlags =
+    appcfg {
+        oauth2 = true
+    }
     downloadSdk = true
-    // appcfg {
-    //     oauth2 = true
-    // }
-    // logs {
-    //     outputFile = file('gae.sparky.log')
-    // }
+    logs {
+        outputFile = file('./migae.main.log') // ???
+    }
 }
 
 clojure {

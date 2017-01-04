@@ -1,1 +1,11 @@
-include ':ear', 'main', ':datastore', ':memcache'
+rootProject.name = "dev-trainer"
+
+include 'main', ':memcache', 'modules'
+
+include ':ds'
+// project(":datastore").name = "ds"
+
+include ':ear'
+
+
+

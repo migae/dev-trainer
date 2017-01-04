@@ -11,7 +11,7 @@
 ;; For testing :ear:aRun: the paths to watch are relative to main/ear/build/exploded-app
 ;; make them match what's in modules/ear/src/main/application/META-INF/application.xml
 ;;  and modules/ear/src/main/application/META-INF/application.xml
-(def main-namespaces (ns-tracker ["./datastore-0.1.0/WEB-INF/classes/ds"]))
+(def main-namespaces (ns-tracker ["./datastore-0.1.1/WEB-INF/classes/ds"]))
 
 ;; For testing :mod-main:aRun: the paths to watch are relative to main/mod-main/build/exploded-app
 ;;(def main-namespaces (ns-tracker ["./build/classes/WEB-INF/classes/main/main"]))

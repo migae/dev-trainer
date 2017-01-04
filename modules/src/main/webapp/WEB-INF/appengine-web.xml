@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
-  <application>migae-dev-trainer</application>
-  <version>0.1.1</version>
+  <application>modules</application>
+  <version>0-1-0</version>
 
   <threadsafe>true</threadsafe>
 
-  <module>memcache</module>
+  <module>modules</module>
 
   <system-properties>
     <!-- <property name="java.util.logging.config.file" value="WEB-INF/classes/log4j.properties"/> -->

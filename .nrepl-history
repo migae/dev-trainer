@@ -1,0 +1,7 @@
+(doc update-in)
+(doc merge-in)
+(def v1 [1 2])
+v1
+(def v2 ["a" "b"])
+(concat v1 v2)
+(concat v1 v2 [3 4])

@@ -1,4 +1,4 @@
-(ns mc.core
+(ns modules.core
   (:import [java.lang IllegalArgumentException RuntimeException]
            [java.io InputStream ByteArrayInputStream]
            [org.apache.commons.io IOUtils]
@@ -24,58 +24,36 @@
             [hiccup.page :refer [html5]]
             ))
 
-(clojure.core/println "loading memcache: mc.core")
+(clojure.core/println "loading modules: modules.core")
 
-(defn home-page []
-  (html5 [:form {:action "/upload" :method "post" :enctype "multipart/form-data"}
-          [:input {:name "file" :type "file" :size "20"}]
-          [:input {:type "submit" :name "submit" :value "submit"}]]))
-
-(defn stream [s]
-  (java.io.PushbackReader.
-   (java.io.InputStreamReader.
-    (ByteArrayInputStream. s)
-    "UTF-8")))
-
-(defn read-stream [s]
-  (clojure.edn/read
-   {:eof :theend}
-   s))
-
-(defn mc-docs []
+(defn modules-docs []
   (swagger-docs
-   "/mc/swagger.json"
-   {:info {:title "migae memcache"
-           :description "Clojure interface to the GAE Memcache API"}
-    :tags [{:name "memcache", :description "memcache functions"}
-           #_{:name "users", :description "user admin"}]}))
+   "/modules/swagger.json"
+   {:info {:title "migae modules"
+           :description "Clojure interface to the GAE Modules API"}
+    :tags [{:name "modules", :description "modules admin"}]}))
 
-(defapi worker-api
+(defapi modules-api
 
-  (swagger-ui "/mc"
-              :swagger-docs "/mc/swagger.json")
-  (mc-docs)
+  (swagger-ui "/modules"
+              :swagger-docs "/modules/swagger.json")
+  (modules-docs)
 
   {:formats [:edn]}
 
-  (context* "/mc" []
-            :tags ["memcache"]
+  (context* "/modules" []
+            :tags ["modules"]
 
    (GET* "/:nm" [nm :as uri]
-         :summary "do some work"
-        (-> (r/response (pr-str (str "Sorry, " nm ", the memcache component is still under construction.")))
+         :summary "a test api"
+        (-> (r/response (pr-str (str "Sorry, " nm ", the modules module is still under construction.")))
             (r/status 200)))
-
-   ;; (rfn {m :request-method, u :uri, ctx :context,  pi :path-info :as req}
-   ;;      ;; (dump/handle-dump req))
-   ;;      (str "UNCAUGHT REQUEST:" \newline))
 
    (route/not-found "URL not found")))
 
 (servlet/defservice
   (-> (routes
-       worker-api)
+       modules-api)
       wrap-params
       redn/wrap-edn-params
-      (wrap-multipart-params {:store (byte-array-store)})
       ))

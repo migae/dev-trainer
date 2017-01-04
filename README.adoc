@@ -1,3 +1,47 @@
 # dev-trainer
-Web app designed to facilitate learning the migae interface to GAE
+
+Web app designed to facilitate learning the migae interface to GAE.
+
+dev-trainer is not intended as an app that you would install to the
+production servers, although you can do that if you want to.  It is
+designed to be used with the local dev server as a means of exploring
+migae's Clojure interface to GAE.
+
+**WARNING** very, very pre-alpha.
+
+### usage
+
+Fork/clone to your local machine, then:
+
+[source,shell]
+----
+$ cd dev-trainer
+$ ./gradlew clean
+$ ./gradlew :ear:aRun
+----
+
+NB:  `./gradlew :ear:aRun` is short for `./gradlew :ear:appengineRun`.
+
+This will build the app in `dev-trainer/ear/build/exploded-app` and
+then launch the dev server.  Access `localhost:8080` in a browser.
+
+Note that this app uses GAE
+link:https://cloud.google.com/appengine/docs/java/modules/[modules].
+In the devlopment environment, each module is accessible at a
+different port on `localhost`.  This is controlled by the
+`build.gradle` file in the `ear` subproject.  See the
+link:https://cloud.google.com/appengine/docs/java/modules/#Java_Configuration[Configuration]
+for more on this.
+
+
+To build without launching the dev server:
+
+[source,shell]
+----
+$ cd dev-trainer
+$ ./gradlew :ear:aEx
+----
+
+`:ear:aEx` is short for `:ear:appengineExplodeApp`.
+
 

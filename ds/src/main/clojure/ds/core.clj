@@ -18,8 +18,8 @@
 (defn ds-docs []
   (swagger-docs
    "/ds/swagger.json"
-   {:info {:title "Migae Datastore"
-           :description "Clojure API for Google AppEngine Datastore"}
+   {:info {:title "migae datastore"
+           :description "Clojure interface to the GAE Datastore API"}
     :tags [{:name "foo", :description "main foo stuff"}
            {:name "ctors", :description "entity-map constructors"}
            {:name "frob", :description "main frobnication"}]}))

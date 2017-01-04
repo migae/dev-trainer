@@ -20,9 +20,10 @@ apply plugin: 'appengine'
 
 dependencies {
     appengineSdk 'com.google.appengine:appengine-java-sdk:1.9.26'
+    deploy project(path: ':ds', configuration: 'archives')
     deploy project(path: ':main', configuration: 'archives')
     deploy project(path: ':memcache', configuration: 'archives')
-    deploy project(path: ':datastore', configuration: 'archives')
+    deploy project(path: ':modules', configuration: 'archives')
 }
 
 appengine {
@@ -31,8 +32,9 @@ appengine {
     httpPort = 8080
     jvmFlags = [
         '-Xmx512m',
-	'-Dcom.google.appengine.devappserver_module.memcache-0.1.0.port=8081',
-	'-Dcom.google.appengine.devappserver_module.datastore-0.1.0.port=8082'
+	'-Dcom.google.appengine.devappserver_module.datastore-0.1.0.port=8081',
+	'-Dcom.google.appengine.devappserver_module.memcache-0.1.0.port=8082',
+	'-Dcom.google.appengine.devappserver_module.modules-0.1.0.port=8083',
 	]
     downloadSdk = true
     appcfg {

@@ -21,14 +21,20 @@
   </module>
   <module>
     <web>
-      <web-uri>memcache-0.1.0</web-uri>
+      <web-uri>datastore-0.1.1</web-uri>
+      <context-root>datastore-ignored</context-root>
+    </web>
+  </module>
+  <module>
+    <web>
+      <web-uri>memcache</web-uri>
       <context-root>memcache-ignored</context-root>
     </web>
   </module>
   <module>
     <web>
-      <web-uri>datastore-0.1.1</web-uri>
-      <context-root>datastore-ignored</context-root>
+      <web-uri>modules-0.1.0</web-uri>
+      <context-root>modules-ignored</context-root>
     </web>
   </module>
   <library-directory>lib</library-directory>

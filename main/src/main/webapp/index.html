@@ -6,9 +6,33 @@
 <p>APIs:</p>
 
 <ul>
-  <li><a href="http://localhost:8082/ds">datastore</a></li>
-  <li><a href="http://localhost:8081/mc">memcache</a></li>
+  <li><a href="http://localhost:8081/ds">datastore</a> (port: 8081)</li>
+  <li><a href="http://localhost:8082/mc">memcache</a> (port: 8082)</li>
+  <li><a href="http://localhost:8083/modules">modules</a> (port: 8083)</li>
 </ul>
+
+<p>
+Warning: servlet startup is excruciatingly slow on the dev server, but
+once loaded, page refresh is pretty fast.
+</p>
+
+<h2>Editing</h2>
+
+<p>
+You'll need to run the `fswatch.sh` script in each module subproject.
+That will launch some background processes to monitor the source tree
+and copy changed files to the appropriate module runtime tree at
+`ear/exploded-app`.
+</p>
+
+<p>
+Then edit a source file and refresh the webpage.  You should see the changes almost instantly.
+</p>
+
+<p>
+You may find it useful to consult <a href="https://github.com/migae/modules">migae modules</a>
+</p>
+
 
 </body>
 </html>
